@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jacintosh OS 0.72</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #005a8c; /* sea / default blue */
+      color: #000;
+      overflow: hidden;
+    }
+    /* lock screen */
+    #lock {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(#003655, #005a8c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      z-index: 999;
+    }
+    #lock button {
+      margin-top: 16px;
+      padding: 8px 18px;
+      border: none;
+      background: #ffffff;
+      cursor: pointer;
+    }
+
+    .desktop {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .icons {
+      padding: 12px;
+      width: 120px;
+    }
+    .icon {
+      margin-bottom: 12px;
+      text-align: center;
+      color: #fff;
+      font-size: 14px;
+      cursor: default;
+    }
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 4px;
+      border: 1px solid #eee;
+      background: rgba(0,0,0,0.2);
+    }
+
+    /* windows */
+    .window {
+      position: absolute;
+      top: 80px;
+      left: 160px;
+      width: 420px;
+      height: 260px;
+      background: #f4f4f4;
+      border: 2px solid #555;
+      box-shadow: 0 0 6px rgba(0,0,0,0.6);
+    }
+    .titlebar {
+      background: #c0c0c0;
+      padding: 4px 8px;
+      cursor: move;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+    .tabs {
+      display: flex;
+      gap: 4px;
+    }
+    .tab {
+      padding: 2px 8px;
+      background: #e0e0e0;
+      border-radius: 3px 3px 0 0;
+      font-size: 12px;
+    }
+    .tab.active {
+      background: #ffffff;
+      border-bottom: 1px solid #ffffff;
+    }
+    .win-buttons span {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-left: 4px;
+      text-align: center;
+      line-height: 14px;
+      font-size: 11px;
+      background: #ff6159;
+      color: #000;
+      cursor: pointer;
+    }
+    .win-buttons span.min { background: #ffbd2e; }
+    .win-buttons span.max { background: #28c840; }
+
+    .content {
+      padding: 8px;
+      height: calc(100% - 26px);
+      font-size: 13px;
+      overflow: auto;
+    }
+
+    /* taskbar */
+    .taskbar {
+      background: #d0d0d0;
+      padding: 2px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+    .task-left span {
+      margin-right: 8px;
+      padding: 2px 6px;
+      background: #f0f0f0;
+      border: 1px solid #b0b0b0;
+      cursor: pointer;
+    }
+    .task-right {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Lock screen -->
+  <div id="lock">
+    <h1>Jacintosh OS 0.72</h1>
+    <p>Swipe / click to unlock</p>
+    <button onclick="document.getElementById('lock').style.display='none'">
+      Unlock
+    </button>
+  </div>
+
+  <div class="desktop">
+    <!-- left icons -->
+    <div class="icons">
+      <div class="icon">
+        <div class="icon-box"></div>
+        <div>usb1</div>
+      </div>
+      <div class="icon">
+        <div class="icon-box"></div>
+        <div>LSCD</div>
+      </div>
+      <div class="icon">
+        <div class="icon-box"></div>
+        <div>Disk</div>
+      </div>
+    </div>
+
+    <!-- example Notes window -->
+    <div class="window" id="win-notes">
+      <div class="titlebar">
+        <div class="tabs">
+          <div class="tab active">Notes</div>
+          <div class="tab">Todo</div>
+        </div>
+        <div class="win-buttons">
+          <span class="min">-</span>
+          <span class="max">□</span>
+          <span onclick="document.getElementById('win-notes').style.display='none'">x</span>
+        </div>
+      </div>
+      <div class="content">
+        <h3>Jacintosh Notes</h3>
+        <ul>
+          <li>Multitasking with windows and tabs.</li>
+          <li>Error dialogs and password manager.</li>
+          <li>Apps: Notes, Paint, Notepad, Chrome-like browser.</li>
+          <li>Target RAM usage: about 10 MB.</li>
+          <li>Wallpapers: sea ocean, turtles walking (default), wave logo.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- taskbar -->
+    <div class="taskbar">
+      <div class="task-left">
+        <span>Jacintosh</span>
+        <span>Notes</span>
+        <span>Chrome</span>
+      </div>
+      <div class="task-right">
+        <span>🔒</span>
+        <span>10 MB</span>
+        <span>12:01</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
